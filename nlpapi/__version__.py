@@ -1,0 +1,7 @@
+__title__ = "nlpapi"
+__description__ = "A language-agnostic API for basic NLP tasks."
+__url__ = "https://github.com/errata-ai/nlpapi"
+__version__ = "0.1.0"
+__author__ = "Joseph Kato"
+__license__ = "MIT"
+__copyright__ = "Copyright 2021 Joseph Kato"
