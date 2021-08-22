@@ -6,11 +6,6 @@ from pysbd.languages import LANGUAGE_CODES
 from spacy.cli import download
 
 app = FastAPI()
-nlp = {
-    "en": get_model("en_core_web_sm"),
-    "de": get_model("de_core_news_sm"),
-    "es": get_model("es_core_news_sm"),
-}
 
 
 def get_model(lang):
@@ -18,13 +13,15 @@ def get_model(lang):
     try:
         return spacy.load(lang)
     except OSError:
-        print(
-            "Downloading language model for the spaCy POS tagger\n"
-            "(don't worry, this will only happen once)",
-            file=stderr,
-        )
         download(lang)
         return spacy.load(lang)
+
+
+nlp = {
+    "en": get_model("en_core_web_sm"),
+    "de": get_model("de_core_news_sm"),
+    "es": get_model("es_core_news_sm"),
+}
 
 
 class NoLangError(HTTPException):
