@@ -23,17 +23,7 @@ REQUIRES_PYTHON = ">=3.6.0"
 VERSION = None
 
 # What packages are required for this module to be executed?
-REQUIRED = [
-    "spacy",
-    "spacy-pkuseg",
-    "fastapi",
-    "uvicorn",
-    "ujson",
-    # Models
-    "en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.1.0/en_core_web_sm-3.1.0.tar.gz",
-    "de_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.1.0/de_core_news_sm-3.1.0.tar.gz",
-    "en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.1.0/es_core_news_sm-3.1.0.tar.gz",
-]
+REQUIRED = ["spacy", "spacy-pkuseg", "fastapi", "uvicorn", "ujson", "pysbd"]
 
 # What packages are optional?
 EXTRAS = {

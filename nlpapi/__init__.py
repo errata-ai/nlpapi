@@ -3,13 +3,28 @@ import spacy
 
 from fastapi import FastAPI, HTTPException
 from pysbd.languages import LANGUAGE_CODES
+from spacy.cli import download
 
 app = FastAPI()
 nlp = {
-    "en": spacy.load("en_core_web_sm"),
-    "de": spacy.load("de_core_news_sm"),
-    "es": spacy.load("es_core_news_sm"),
+    "en": get_model("en_core_web_sm"),
+    "de": get_model("de_core_news_sm"),
+    "es": get_model("es_core_news_sm"),
 }
+
+
+def get_model(lang):
+    """Load (or download + load) the given model."""
+    try:
+        return spacy.load(lang)
+    except OSError:
+        print(
+            "Downloading language model for the spaCy POS tagger\n"
+            "(don't worry, this will only happen once)",
+            file=stderr,
+        )
+        download(lang)
+        return spacy.load(lang)
 
 
 class NoLangError(HTTPException):
